@@ -2,6 +2,14 @@
 // All rights reserved
 // https://github.com/pyniuX
 
+using pokemon.classes.pokemons;
+
 namespace pokemon.classes.items;
-interface IItem
-{ }
+
+public interface IItem
+{
+    public string Name { get; }
+    public int Price { get; }
+
+    public void Execute(Player player, IPokemon pokemon);
+}

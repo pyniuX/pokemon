@@ -21,7 +21,7 @@ public class Pokemon : IPokemon
 
     public PokemonType Type
     {
-        get{ return type; }    
+        get { return type; }
     }
     public IReadOnlyList<Attack> Attacks => attacks.AsReadOnly();
 
@@ -48,8 +48,15 @@ public class Pokemon : IPokemon
     {
         this.defualtHP = defaultHP;
     }
+
     public void SetType(PokemonType type)
     {
         this.type = type;
+    }
+
+    public void Heal(int value)
+    {
+        value = (value + HP < defualtHP) ? value : defualtHP-HP;
+        HP += value;
     }
 }

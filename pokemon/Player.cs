@@ -8,7 +8,7 @@ using pokemon.classes.items;
 using pokemon.classes.pokemons;
 using pokemon.menu.states;
 
-class Player
+public class Player
 {
     private List<IItem> inventory;
     private List<IPokemon> pokemons;

@@ -9,9 +9,18 @@ using Microsoft.AspNetCore.Mvc;
 
 public class MyConfig
 {
+    public Dictionary<string, int> Potion { get; set; }
     public string DataDir { get; set; }
     public string PokemonsDataDir { get; set; }
     public string AttacksDataDir { get; set; }
+    public int PotionHeal
+    {
+        get { return Potion["PotionHeal"]; }
+    }
+    public int PotionPrice
+    {
+        get { return Potion["PotionPrice"]; }
+    }
 
 }
 
