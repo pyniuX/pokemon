@@ -154,7 +154,7 @@ public class UnitTest1
         Player player = new Player();
         IItem pokeball = new Pokeball();
         IPokemon pok = PokemonFactory.CreatePokemon(TestData.pokemonFile1);
-        pok.HP = pok.DefaultHP;
+        pok.HP = (int)(pok.DefaultHP);
         // When
         bool isCaught = pokeball.Execute(player, pok);
         // Then

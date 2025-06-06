@@ -25,8 +25,12 @@ public static class PokemonFactory
         var dict = JsonConvert.DeserializeObject<Dictionary<string, object>>(jsonString);
         Pokemon pok = JsonConvert.DeserializeObject<Pokemon>(jsonString)!;
 
-        pok.SetType(GetPokemonType.ByString[dict["Type"].ToString()]);
         pok.SetDefaultHP(pok.HP);
+        pok.SetType(GetPokemonType.ByString[dict["Type"].ToString()]);
+        if (dict.TryGetValue("EvolutionFile", out var value))
+        {
+            pok.SetEvolution(value.ToString());
+        }
         return pok;
     }
 

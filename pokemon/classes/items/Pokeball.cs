@@ -41,6 +41,6 @@ public class Pokeball : IItem
 
     private double CalculateCatchChance(IPokemon pokemon)
     {
-        return  0.3d * (100 - ((pokemon.HP*100)/pokemon.DefaultHP));
+        return  (double)(0.3d * (100 - ((pokemon.HP*100)/pokemon.DefaultHP)));
     }
 }

@@ -8,24 +8,29 @@ using pokemon.classes.attacks;
 
 public class Pokemon : IPokemon
 {
-    private int defualtHP;
+    private int? defualtHP;
+    private string? evolutionFile;
     private List<Attack> attacks;
-    private PokemonType type;
+    private PokemonType? type;
+
 
     public string Name { get; set; }
     public int Level { get; set; }
-    public int DefaultHP {
-        get{ return defualtHP; }
-    }
     public int HP { get; set; }
     public float AP { get; set; }
-    public string? EvolutionFile { get; set; }
-
-    public PokemonType Type
+    public int? DefaultHP {
+        get{ return defualtHP; }
+    }
+    public string? EvolutionFile
+    {
+        get { return evolutionFile; }
+    }
+    public PokemonType? Type
     {
         get { return type; }
     }
     public IReadOnlyList<Attack> Attacks => attacks.AsReadOnly();
+
 
     public void AddAttack(Attack attack)
     {
@@ -48,17 +53,23 @@ public class Pokemon : IPokemon
 
     public void SetDefaultHP(int defaultHP)
     {
-        this.defualtHP = defaultHP;
+        // if defaultHP is null assign, else nothing
+        this.defualtHP ??= defaultHP;
+    }
+
+    public void SetEvolution(string fileName)
+    {
+        this.evolutionFile ??= fileName;
     }
 
     public void SetType(PokemonType type)
     {
-        this.type = type;
+        this.type ??= type;
     }
 
     public void Heal(int value)
     {
-        value = (value + HP < defualtHP) ? value : defualtHP-HP;
+        value = (int)((value + HP < defualtHP) ? value : defualtHP-HP);
         HP += value;
     }
 }

@@ -10,16 +10,20 @@ public interface IPokemon
 {
     public string Name { get; set; }
     public int Level { get; set; }
-    public int DefaultHP { get;}
+    public int? DefaultHP { get; }
     public int HP { get; set; }
     public float AP { get; set; }
-    public string? EvolutionFile { get; set; }
-    public PokemonType Type { get; }
+    public string? EvolutionFile { get; }
+    public PokemonType? Type { get; }
     public IReadOnlyList<Attack> Attacks { get; }
 
-    public IPokemon? Evolve();
     public void Attack(IPokemon target, Attack attack);
     public void AddAttack(Attack attack);
-    public void RemoveAttack(Attack attack);
+    public IPokemon? Evolve();
     public void Heal(int value);
+    public void SetType(PokemonType type);
+    public void SetEvolution(string fileName);
+    public void SetDefaultHP(int defaultHP);
+    public void RemoveAttack(Attack attack);
+
 }
