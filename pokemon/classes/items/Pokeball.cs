@@ -6,8 +6,9 @@ namespace pokemon.classes.items;
 
 using pokemon.classes.pokemons;
 
-class Pokeball : IItem
+public class Pokeball : IItem
 {
+    private static readonly Random random = new Random();
     private string name;
     private int price;
 
@@ -27,8 +28,19 @@ class Pokeball : IItem
         price = 10;
     }
 
-    public void Execute(Player player, IPokemon pokemon)
+    public bool Execute(Player player, IPokemon pokemon)
     {
-        // TODO: catch pokemon
+        double catchChance = CalculateCatchChance(pokemon);
+        if (random.Next(0, 100) < 50 + catchChance)
+        {
+            player.AddPokemon(pokemon);
+            return true;
+        }
+        return false;
+    }
+
+    private double CalculateCatchChance(IPokemon pokemon)
+    {
+        return  0.3d * (100 - ((pokemon.HP*100)/pokemon.DefaultHP));
     }
 }

@@ -11,6 +11,7 @@
     <Nullable>enable</Nullable>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <AssemblyName>pokemon</AssemblyName>
+    <!-- some nullable warnigngs, don't remember -->
     <NoWarn>CS8618;CS0169</NoWarn>
   </PropertyGroup>
 

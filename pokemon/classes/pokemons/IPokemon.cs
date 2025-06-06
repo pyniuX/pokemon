@@ -10,6 +10,7 @@ public interface IPokemon
 {
     public string Name { get; set; }
     public int Level { get; set; }
+    public int DefaultHP { get;}
     public int HP { get; set; }
     public float AP { get; set; }
     public string? EvolutionFile { get; set; }

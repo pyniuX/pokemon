@@ -31,8 +31,9 @@ public class Potion : IItem
         heal = this.config.PotionHeal;
     }
 
-    public void Execute(Player player, IPokemon pokemon)
+    public bool Execute(Player player, IPokemon pokemon)
     {
         pokemon.Heal(heal);
+        return true;
     }
 }

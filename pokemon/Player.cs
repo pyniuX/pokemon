@@ -37,14 +37,14 @@ public class Player
         inventory.Remove(item);
     }
 
-    public void AddPokemon(IItem item)
+    public void AddPokemon(IPokemon pokemon)
     {
-        inventory.Add(item);
+        pokemons.Add(pokemon);
     }
 
-    public void RemovePokemon(IItem item)
+    public void RemovePokemon(IPokemon pokemon)
     {
-        inventory.Remove(item);
+        pokemons.Remove(pokemon);
     }
 
 

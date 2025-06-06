@@ -9,12 +9,14 @@ using pokemon.classes.attacks;
 public class Pokemon : IPokemon
 {
     private int defualtHP;
-
     private List<Attack> attacks;
     private PokemonType type;
 
     public string Name { get; set; }
     public int Level { get; set; }
+    public int DefaultHP {
+        get{ return defualtHP; }
+    }
     public int HP { get; set; }
     public float AP { get; set; }
     public string? EvolutionFile { get; set; }

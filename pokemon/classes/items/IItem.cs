@@ -11,5 +11,5 @@ public interface IItem
     public string Name { get; }
     public int Price { get; }
 
-    public void Execute(Player player, IPokemon pokemon);
+    public bool Execute(Player player, IPokemon pokemon);
 }

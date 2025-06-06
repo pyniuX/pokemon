@@ -144,4 +144,28 @@ public class UnitTest1
         Assert.Equal(pok.HP, hpDesired);
     }
 
+    [Theory]
+    [InlineData]
+    [InlineData]
+    [InlineData]
+    public void PokeballTest()
+    {
+        // Given
+        Player player = new Player();
+        IItem pokeball = new Pokeball();
+        IPokemon pok = PokemonFactory.CreatePokemon(TestData.pokemonFile1);
+        pok.HP = pok.DefaultHP;
+        // When
+        bool isCaught = pokeball.Execute(player, pok);
+        // Then
+        if (isCaught)
+        {
+            Assert.Equal(player.Pokemons[0], pok);
+        }
+        else
+        {
+            Assert.Equal(player.Pokemons.Count(), 0);
+        }
+    }
+
 }

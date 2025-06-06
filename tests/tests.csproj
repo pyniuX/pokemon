@@ -10,7 +10,9 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>tests</RootNamespace>
     <TargetFramework>net8.0</TargetFramework>
-    <!-- <AssemblyName>tests</AssemblyName>   -->
+    <AssemblyName>tests</AssemblyName>
+    <!-- multiple inline data warning, no parameters at teory method warning -->
+    <NoWarn>xUnit1025;xUnit1006</NoWarn>
     <!--
     To enable the Microsoft Testing Platform 'dotnet test' experience, add property:
       <TestingPlatformDotnetTestSupport>true</TestingPlatformDotnetTestSupport>
