@@ -1,0 +1,11 @@
+{
+    "Name": "Bulbasaur",
+    "Level": 0,
+    "HP": 45,
+    "AP": 1,
+    "Evoluton":{
+        "Name": "Ivysaur",
+        "HP": 60,
+        "AP": 1.2
+    }
+}
