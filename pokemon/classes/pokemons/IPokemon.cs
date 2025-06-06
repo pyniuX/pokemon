@@ -14,10 +14,10 @@ public interface IPokemon
     public int HP{ get; set; }
     public float AP{ get; set; }
     public IType Type{ get; set; }
-    public IReadOnlyList<IAttack> Attacks{ get; }
+    public IReadOnlyList<Attack> Attacks{ get; }
 
     public void Evolve();
-    public void Attack(IPokemon target, IAttack attack);
-    public void AddAttack(IAttack attack);
-    public void RemoveAttack(IAttack attack);
+    public void Attack(IPokemon target, Attack attack);
+    public void AddAttack(Attack attack);
+    public void RemoveAttack(Attack attack);
 }

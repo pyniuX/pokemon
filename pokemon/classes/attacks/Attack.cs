@@ -4,5 +4,9 @@
 
 namespace pokemon.classes.attacks;
 
-public interface IAttack
-{}
+public class Attack
+{
+    public int AP { get; set; }
+    public string Name { get; set; }
+
+}

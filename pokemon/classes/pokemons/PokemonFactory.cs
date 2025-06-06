@@ -4,12 +4,12 @@
 
 // lacking support for json interface serialization
 // https://github.com/dotnet/runtime/discussions/87545
+
 namespace pokemon.classes.pokemons;
 
-using System.Text.Json;
-using System.IO;
-using Microsoft.Extensions.Options;
 using pokemon.utils;
+using System.Text.Json;
+
 public static class PokemonFactory
 {
     public static Pokemon CreatePokemon(string filePath)

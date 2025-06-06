@@ -10,10 +10,10 @@ using pokemon.classes.types;
 public class Pokemon : IPokemon
 {
     private int defualtHP;
-    private string baseData;
+    private string evolution;
     // TODO: maybe two different json?
 
-    private List<IAttack> attacks;
+    private List<Attack> attacks;
 
     public string Name { get; set; }
     public int Level { get; set; }
@@ -26,14 +26,14 @@ public class Pokemon : IPokemon
     // defualtHP = _defaultHP;
     // }
 
-    public IReadOnlyList<IAttack> Attacks => attacks.AsReadOnly();
+    public IReadOnlyList<Attack> Attacks => attacks.AsReadOnly();
 
-    public void AddAttack(IAttack attack)
+    public void AddAttack(Attack attack)
     {
         attacks.Add(attack);
     }
 
-    public void RemoveAttack(IAttack attack)
+    public void RemoveAttack(Attack attack)
     {
         attacks.Remove(attack);
     }
@@ -41,7 +41,7 @@ public class Pokemon : IPokemon
     public void Evolve()
     { }
 
-    public void Attack(IPokemon target, IAttack attack)
+    public void Attack(IPokemon target, Attack attack)
     { }
     
 }
