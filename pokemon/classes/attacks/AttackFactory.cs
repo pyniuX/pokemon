@@ -9,10 +9,18 @@ using System.Text.Json;
 
 public static class AttackFactory
 {
+    private static MyConfig? config;
+
     public static Attack CreateAttack(string filePath)
     {
-        // TODO: use path combine
-        string jsonString = File.ReadAllText($"{Utils.GetProjectDir()}{filePath}");
-        return JsonSerializer.Deserialize<Attack>(jsonString)!;
+        string path = Path.Combine(Utils.GetProjectDir(), AttackFactory.config.AttacksDataDir ,filePath);
+        string jsonString = File.ReadAllText(path);
+        Attack attack = JsonSerializer.Deserialize<Attack>(jsonString)!;
+        return attack;
+    }
+
+    public static void SetConfig(MyConfig? config)
+    {
+        AttackFactory.config = config;
     }
 }

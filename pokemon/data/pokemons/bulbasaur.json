@@ -3,5 +3,5 @@
     "Level": 0,
     "HP": 45,
     "AP": 1,
-    "Evolution": "ivysaur.json"
+    "EvolutionFile": "ivysaur.json"
 }

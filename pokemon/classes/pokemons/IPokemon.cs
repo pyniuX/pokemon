@@ -13,10 +13,11 @@ public interface IPokemon
     public int Level{ get; set; }
     public int HP{ get; set; }
     public float AP{ get; set; }
-    public IType Type{ get; set; }
+    public string? EvolutionFile{ get; set; }
+    public IType Type { get; set; }
     public IReadOnlyList<Attack> Attacks{ get; }
 
-    public void Evolve();
+    public IPokemon? Evolve();
     public void Attack(IPokemon target, Attack attack);
     public void AddAttack(Attack attack);
     public void RemoveAttack(Attack attack);

@@ -2,5 +2,6 @@
     "Name": "PokemonName",
     "Level": 0,
     "HP": 50,
-    "AP": 1
+    "AP": 1,
+    "EvolutionFile": "test_pokemon_2.json"
 }

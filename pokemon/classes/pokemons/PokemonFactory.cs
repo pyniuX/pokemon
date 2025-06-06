@@ -7,15 +7,26 @@
 
 namespace pokemon.classes.pokemons;
 
+using Microsoft.Extensions.Options;
 using pokemon.utils;
 using System.Text.Json;
 
 public static class PokemonFactory
 {
+    private static MyConfig? config;
+
     public static Pokemon CreatePokemon(string filePath)
     {
-        // TODO: use path combine
-        string jsonString = File.ReadAllText($"{Utils.GetProjectDir()}{filePath}");
-        return JsonSerializer.Deserialize<Pokemon>(jsonString)!;
+        string path = Path.Combine(Utils.GetProjectDir(), PokemonFactory.config.PokemonsDataDir ,filePath);
+        string jsonString = File.ReadAllText(path);
+        Pokemon pok = JsonSerializer.Deserialize<Pokemon>(jsonString)!;
+        pok.SetDefaultHP(pok.HP);
+        return pok;
     }
+
+    public static void SetConfig(MyConfig? config)
+    {
+        PokemonFactory.config = config;
+    }
+
 }

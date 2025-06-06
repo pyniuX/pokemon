@@ -10,8 +10,6 @@ using pokemon.classes.types;
 public class Pokemon : IPokemon
 {
     private int defualtHP;
-    private string evolution;
-    // TODO: maybe two different json?
 
     private List<Attack> attacks;
 
@@ -19,13 +17,9 @@ public class Pokemon : IPokemon
     public int Level { get; set; }
     public int HP { get; set; }
     public float AP { get; set; }
+    public string? EvolutionFile { get; set; }
+
     public IType Type { get; set; }
-
-    // public Pokemon(int _defaultHP)
-    // {
-    // defualtHP = _defaultHP;
-    // }
-
     public IReadOnlyList<Attack> Attacks => attacks.AsReadOnly();
 
     public void AddAttack(Attack attack)
@@ -38,10 +32,21 @@ public class Pokemon : IPokemon
         attacks.Remove(attack);
     }
 
-    public void Evolve()
-    { }
-
     public void Attack(IPokemon target, Attack attack)
     { }
-    
+
+    public IPokemon? Evolve()
+    {
+        var output = (EvolutionFile is null) ? null : PokemonFactory.CreatePokemon(EvolutionFile);
+        return output;
+    }
+
+    public void SetDefaultHP(int defaultHP)
+    {
+        this.defualtHP = defaultHP;
+    }
+    public void SetType()
+    {
+        // TODO: set type
+    }
 }

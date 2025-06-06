@@ -22,12 +22,13 @@ class Program
             .Build();
 
         var myConfig = config.GetSection("MyConfig").Get<MyConfig>();
+
+        PokemonFactory.SetConfig(myConfig);
         // DIExample getConfig = new DIExample(Options.Create(myConfig));
         // Console.WriteLine(myConfig.DataDir);    
 
-        // Console.WriteLine($"Curr dir: {config.Value.GetProjectDir()}");
-
-        Pokemon pokemon = PokemonFactory.CreatePokemon($"{myConfig?.PokemonsDataDir}/bulbasaur.json");
+        
+        Pokemon pokemon = PokemonFactory.CreatePokemon($"bulbasaur.json");
         Console.WriteLine(pokemon.Name);
     }
 }

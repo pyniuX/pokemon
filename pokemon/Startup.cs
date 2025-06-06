@@ -11,6 +11,8 @@ public class MyConfig
 {
     public string DataDir { get; set; }
     public string PokemonsDataDir { get; set; }
+    public string AttacksDataDir { get; set; }
+
 }
 
 
