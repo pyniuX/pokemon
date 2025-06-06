@@ -3,5 +3,6 @@
     "Level": 0,
     "HP": 45,
     "AP": 1,
+    "Type": "Grass",
     "EvolutionFile": "ivysaur.json"
 }

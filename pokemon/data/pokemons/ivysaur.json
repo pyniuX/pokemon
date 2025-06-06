@@ -1,5 +1,6 @@
 {
     "Name": "Ivysaur",
     "HP": 60,
-    "AP": 1.2
+    "AP": 1.2,
+    "Type": "Grass"
 }

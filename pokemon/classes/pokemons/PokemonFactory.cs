@@ -7,7 +7,9 @@
 
 namespace pokemon.classes.pokemons;
 
-using Microsoft.Extensions.Options;
+// using Microsoft.Extensions.Options;
+using System.Collections.Generic;
+using Newtonsoft.Json;
 using pokemon.utils;
 using System.Text.Json;
 
@@ -17,9 +19,13 @@ public static class PokemonFactory
 
     public static Pokemon CreatePokemon(string filePath)
     {
-        string path = Path.Combine(Utils.GetProjectDir(), PokemonFactory.config.PokemonsDataDir ,filePath);
+        string path = Path.Combine(Utils.GetProjectDir(), PokemonFactory.config.PokemonsDataDir, filePath);
         string jsonString = File.ReadAllText(path);
-        Pokemon pok = JsonSerializer.Deserialize<Pokemon>(jsonString)!;
+
+        var dict = JsonConvert.DeserializeObject<Dictionary<string, object>>(jsonString);
+        Pokemon pok = JsonConvert.DeserializeObject<Pokemon>(jsonString)!;
+
+        pok.SetType(GetPokemonType.ByString[dict["Type"].ToString()]);
         pok.SetDefaultHP(pok.HP);
         return pok;
     }

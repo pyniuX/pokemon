@@ -3,5 +3,6 @@
     "Level": 0,
     "HP": 50,
     "AP": 1,
+    "Type": "Fire",
     "EvolutionFile": "test_pokemon_2.json"
 }

@@ -5,7 +5,6 @@
 namespace pokemon.classes.pokemons;
 
 using pokemon.classes.attacks;
-using pokemon.classes.types;
 
 public interface IPokemon
 {
@@ -14,7 +13,7 @@ public interface IPokemon
     public int HP{ get; set; }
     public float AP{ get; set; }
     public string? EvolutionFile{ get; set; }
-    public IType Type { get; set; }
+    public PokemonType Type { get; }
     public IReadOnlyList<Attack> Attacks{ get; }
 
     public IPokemon? Evolve();

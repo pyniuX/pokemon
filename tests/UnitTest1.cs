@@ -51,7 +51,6 @@ public class UnitTest1
     [Theory]
     [InlineData("test_pokemon_1.json", "ImięPokemona123", 5, 100, 2.5)]
     [InlineData("test_pokemon_2.json", "PokemonName", 0, 50, 1)]
-
     public void EvolutionTest(string filePath, string name, int level, int hp, float ap)
     {
         // When
@@ -62,6 +61,17 @@ public class UnitTest1
         Assert.Equal(evolved.Level, level);
         Assert.Equal(evolved.HP, hp);
         Assert.Equal(evolved.AP, ap);
+    }
+
+    [Theory]
+    [InlineData("test_pokemon_1.json", "Fire")]
+    [InlineData("test_pokemon_2.json", "Normal")]
+    public void PokemonTypeTest(string filePath, string pokemonType)
+    {
+        // When
+        IPokemon pok = PokemonFactory.CreatePokemon(filePath);
+        // Them
+        Assert.Equal(pok.Type, GetPokemonType.ByString[pokemonType]);
     }
 
 }

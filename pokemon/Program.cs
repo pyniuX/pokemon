@@ -27,8 +27,9 @@ class Program
         // DIExample getConfig = new DIExample(Options.Create(myConfig));
         // Console.WriteLine(myConfig.DataDir);    
 
-        
-        Pokemon pokemon = PokemonFactory.CreatePokemon($"bulbasaur.json");
-        Console.WriteLine(pokemon.Name);
+
+        Pokemon pok = PokemonFactory.CreatePokemon($"bulbasaur.json");
+        Console.WriteLine(pok.Name);
+        Console.WriteLine($"POKEMON TYPE: {pok.Type}");
     }
 }

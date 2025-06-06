@@ -5,13 +5,13 @@
 namespace pokemon.classes.pokemons;
 
 using pokemon.classes.attacks;
-using pokemon.classes.types;
 
 public class Pokemon : IPokemon
 {
     private int defualtHP;
 
     private List<Attack> attacks;
+    private PokemonType type;
 
     public string Name { get; set; }
     public int Level { get; set; }
@@ -19,7 +19,10 @@ public class Pokemon : IPokemon
     public float AP { get; set; }
     public string? EvolutionFile { get; set; }
 
-    public IType Type { get; set; }
+    public PokemonType Type
+    {
+        get{ return type; }    
+    }
     public IReadOnlyList<Attack> Attacks => attacks.AsReadOnly();
 
     public void AddAttack(Attack attack)
@@ -45,8 +48,8 @@ public class Pokemon : IPokemon
     {
         this.defualtHP = defaultHP;
     }
-    public void SetType()
+    public void SetType(PokemonType type)
     {
-        // TODO: set type
+        this.type = type;
     }
 }
