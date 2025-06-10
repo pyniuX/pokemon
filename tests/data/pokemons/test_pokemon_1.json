@@ -4,5 +4,6 @@
     "HP": 50,
     "AP": 1,
     "Type": "Fire",
-    "EvolutionFile": "test_pokemon_2.json"
+    "EvolutionFile": "test_pokemon_2.json",
+    "AttacksFiles": ["test_attack_1.json"]
 }

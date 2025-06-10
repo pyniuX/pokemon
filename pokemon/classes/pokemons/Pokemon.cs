@@ -10,7 +10,7 @@ public class Pokemon : IPokemon
 {
     private int? defualtHP;
     private string? evolutionFile;
-    private List<Attack> attacks;
+    private List<Attack> attacks = new List<Attack>();
     private PokemonType? type;
 
 

@@ -4,5 +4,6 @@
     "HP": 100,
     "AP": 2.5,
     "Type": "Normal",
-    "EvolutionFile": "test_pokemon_1.json"
+    "EvolutionFile": "test_pokemon_1.json",
+    "AttacksFiles": ["test_attack_1.json","test_attack_2.json"]
 }
