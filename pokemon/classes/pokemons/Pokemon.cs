@@ -70,6 +70,7 @@ public class Pokemon : IPokemon
     public void Heal(int value)
     {
         value = (int)((value + HP < defualtHP) ? value : defualtHP-HP);
+        Console.WriteLine($"{DateTime.Now} | POKEMON | Healing {Name} from {HP} to {HP+value}");
         HP += value;
     }
 }

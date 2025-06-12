@@ -9,7 +9,9 @@ using System.Configuration;
 using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Configuration;
 using pokemon.classes.pokemons;
-
+using pokemon.classes.items;
+using pokemon.menu.commands;
+using pokemon.utils;
 
 class Program
 {
@@ -27,9 +29,22 @@ class Program
         // DIExample getConfig = new DIExample(Options.Create(myConfig));
         // Console.WriteLine(myConfig.DataDir);    
 
-
+        Player player = new Player();
         Pokemon pok = PokemonFactory.CreatePokemon($"bulbasaur.json");
-        Console.WriteLine(pok.Name);
-        Console.WriteLine($"POKEMON TYPE: {pok.Type}");
+        pok.HP -= 15;
+        IItem potion = new Potion(myConfig);
+        player.AddItem(potion);
+        player.AddPokemon(pok);
+
+        Invoker invoker = new Invoker();
+        while (true)
+        {
+            player.State.ShowMenu();
+
+            string input = Utils.TakeString("Enter your choice:");
+
+            player.State.HandleInput(input);
+            // invoker.ExecuteCommand();
+        }
     }
 }

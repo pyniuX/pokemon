@@ -4,7 +4,7 @@
 
 namespace pokemon.menu.commands;
 
-interface ICommand
+public interface ICommand
 {
     public void Execute();
 }

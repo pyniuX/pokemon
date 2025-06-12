@@ -6,6 +6,7 @@ using pokemon.classes.pokemons;
 
 namespace pokemon.classes.items;
 
+class ItemMissing(): Exception();
 public interface IItem
 {
     public string Name { get; }
