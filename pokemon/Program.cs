@@ -35,6 +35,7 @@ class Program
         IItem potion = new Potion(myConfig);
         player.AddItem(potion);
         player.AddPokemon(pok);
+        player.Currency = 100;
 
         Invoker invoker = new Invoker();
         while (true)
