@@ -157,7 +157,7 @@ public class UnitTest1: IDisposable
     public void PotionTest(int hpBefore, int hpDesired)
     {
         // Given
-        Player player = new Player();
+        Player player = new Player(config);
         IItem potion = new Potion(config);
         IPokemon pok = PokemonFactory.CreatePokemon(TestData.pokemonFile1);
         pok.HP = hpBefore;
@@ -174,8 +174,8 @@ public class UnitTest1: IDisposable
     public void PokeballTest()
     {
         // Given
-        Player player = new Player();
-        IItem pokeball = new Pokeball();
+        Player player = new Player(config);
+        IItem pokeball = new Pokeball(config);
         IPokemon pok = PokemonFactory.CreatePokemon(TestData.pokemonFile1);
         pok.HP = (int)(pok.DefaultHP);
         // When

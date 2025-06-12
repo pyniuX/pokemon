@@ -4,10 +4,12 @@
 
 namespace pokemon.menu.commands;
 
-public class OpenInventoryCommand: ICommand
+using pokemon.utils;
+
+public class OpenInventoryCommand : ICommand
 {
     public void Execute()
     {
-        Console.WriteLine($"{DateTime.Now} | COMMAND | Opening Inventory");
+        Logger.Log("COMMAND", "Opening Inventory");
     }
 }

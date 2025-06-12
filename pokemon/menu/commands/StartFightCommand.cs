@@ -4,11 +4,13 @@
 
 namespace pokemon.menu.commands;
 
+using pokemon.utils;
+
 public class StartFightCommand : ICommand
 {
 
     public void Execute()
     {
-        Console.WriteLine($"{DateTime.Now} | COMMAND | Starting Fight");
+        Logger.Log("COMMAND", "Starting Fight");
     }
 }

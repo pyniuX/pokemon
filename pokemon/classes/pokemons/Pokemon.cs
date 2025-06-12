@@ -5,6 +5,7 @@
 namespace pokemon.classes.pokemons;
 
 using pokemon.classes.attacks;
+using pokemon.utils;
 
 public class Pokemon : IPokemon
 {
@@ -70,7 +71,7 @@ public class Pokemon : IPokemon
     public void Heal(int value)
     {
         value = (int)((value + HP < defualtHP) ? value : defualtHP-HP);
-        Console.WriteLine($"{DateTime.Now} | POKEMON | Healing {Name} from {HP} to {HP+value}");
+        Logger.Log("POKEMON", $"Healing {Name} from {HP} to {HP+value}");
         HP += value;
     }
 }

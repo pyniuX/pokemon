@@ -29,7 +29,7 @@ class Program
         // DIExample getConfig = new DIExample(Options.Create(myConfig));
         // Console.WriteLine(myConfig.DataDir);    
 
-        Player player = new Player();
+        Player player = new Player(myConfig);
         Pokemon pok = PokemonFactory.CreatePokemon($"bulbasaur.json");
         pok.HP -= 15;
         IItem potion = new Potion(myConfig);

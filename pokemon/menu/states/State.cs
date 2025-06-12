@@ -4,8 +4,9 @@
 
 namespace pokemon.menu.states;
 
+using pokemon.utils;
 
-class StateTransitionForbidden(): Exception();
+class StateTransitionForbidden() : Exception();
 
 // TODO: keep states stored to not create new one each change
 public abstract class State
@@ -32,11 +33,11 @@ public abstract class State
         player.State = new FightState(player);
     }
 
-    public virtual void ToShop(State previousState)
+    public virtual void ToShop(State previousState, MyConfig config)
     {
         LogShopTransition();
         player.PreviousState = previousState;
-        player.State = new ShopState(player);
+        player.State = new ShopState(player, config);
     }
 
     public virtual void ToInventory(State previousState)
@@ -46,29 +47,29 @@ public abstract class State
         player.State = new InventoryState(player);
     }
 
-    public virtual void ToMenu(State previousState)
+    public virtual void ToMenu(State previousState, MyConfig config)
     {
         LogMenuTransition();
         player.PreviousState = previousState;
-        player.State = new MenuState(player);
+        player.State = new MenuState(player, config);
     }
 
     public virtual void ToPrevious()
     {
-        Console.WriteLine($"{DateTime.Now} | STATE| {Info()} | Returning to previous state...");
+        Logger.Log("STATE", $"{Info()} | Returning to previous state...");
         player.State = player.PreviousState;
     }
 
     public void LogShopTransition()
-    { Console.WriteLine($"{DateTime.Now} | STATE | {Info()} | Opening shop..."); }
+    { Logger.Log("STATE", $"{Info()} | Opening shop..."); }
 
     public void LogFightTransition()
-    { Console.WriteLine($"{DateTime.Now} | STATE | {Info()} | Starting fight...");}
+    { Logger.Log("STATE", $"{Info()} | Starting fight...");}
 
     public void LogInventoryTransition()
-    { Console.WriteLine($"{DateTime.Now} | STATE | {Info()} | Opening inventory...");}
+    { Logger.Log("STATE", $"{Info()} | Opening inventory...");}
 
     public void LogMenuTransition()
-    { Console.WriteLine($"{DateTime.Now} | STATE | {Info()} | Returning to menu...");}
+    { Logger.Log("STATE", $"{Info()} | Returning to menu...");}
 
 }

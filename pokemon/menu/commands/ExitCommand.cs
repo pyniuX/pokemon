@@ -4,11 +4,13 @@
 
 namespace pokemon.menu.commands;
 
+using pokemon.utils;
+
 public class ExitCommand : ICommand
 {
     public void Execute()
     {
-        Console.WriteLine($"{DateTime.Now} | COMMAND | Closing the Game");
+        Logger.Log("COMMAND", "Closing the Game");
         Environment.Exit(0);
     }
 }

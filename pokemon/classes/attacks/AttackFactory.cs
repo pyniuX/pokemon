@@ -22,7 +22,7 @@ public static class AttackFactory
         var dict = JsonConvert.DeserializeObject<Dictionary<string, object>>(jsonString);
         if (! IsInDatabase(dict["Name"].ToString()))
         {
-            Console.WriteLine($"{DateTime.Now} | ATTACK | Creating attack from {filePath}");
+            Logger.Log("ATTACK", $"Creating attack from {filePath}");
             Attack attack = JsonConvert.DeserializeObject<Attack>(jsonString)!;
             AddAttackToDatabase(attack);
             return attack;

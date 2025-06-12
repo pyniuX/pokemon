@@ -9,6 +9,8 @@ using pokemon.classes.pokemons;
 public class Pokeball : IItem
 {
     private static readonly Random random = new Random();
+
+    private readonly MyConfig? config;
     private string name;
     private int price;
 
@@ -22,10 +24,11 @@ public class Pokeball : IItem
         get { return price; }
     }
 
-    public Pokeball()
+    public Pokeball(MyConfig config)
     {
+        this.config = config;
         name = "Pokeball";
-        price = 10;
+        price = this.config.PokeballPrice;
     }
 
     public bool Execute(Player player, IPokemon pokemon)

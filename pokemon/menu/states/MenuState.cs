@@ -2,16 +2,24 @@
 // All rights reserved
 // https://github.com/pyniuX
 
-using pokemon.menu.commands;
-
 namespace pokemon.menu.states;
 
-public class MenuState(Player player) : State(player)
+using pokemon.utils;
+using Microsoft.Extensions.Logging;
+using pokemon.menu.commands;
+public class MenuState : State
 {
+    private readonly MyConfig config;
+
+    public MenuState(Player player, MyConfig config) : base(player)
+    {
+        this.config = config;
+    }
+
     public override void ShowMenu()
     {
-        // TODO: load messages from json
-        Console.WriteLine("\n1. Start Fight");
+        Console.WriteLine("\n---------------------------");
+        Console.WriteLine("1. Start Fight");
         Console.WriteLine("2. Open Inventory");
         Console.WriteLine("3. Open Shop");
         Console.WriteLine("4. Exit Game\n");
@@ -28,13 +36,13 @@ public class MenuState(Player player) : State(player)
                 ToInventory(this);
                 break;
             case "3":
-                ToShop(this);
+                ToShop(this, config);
                 break;
             case "4":
                 player.Invoker.SetAndExecuteCommand(new ExitCommand());
                 break;
             default:
-                Console.WriteLine($"{DateTime.Now} | STATE | {Info()} | Invalid input: {input}");
+                Logger.Log("STATE", $"{Info()} | Invalid input: {input}");
                 break;
         }
     }

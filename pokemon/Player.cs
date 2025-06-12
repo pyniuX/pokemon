@@ -11,6 +11,7 @@ using pokemon.menu.states;
 
 public class Player
 {
+    private readonly MyConfig? config;
     private List<IItem> inventory;
     private List<IPokemon> pokemons;
     private State? state;
@@ -38,13 +39,13 @@ public class Player
         set { invoker = value; }
     }
 
-    public Player()
+    public Player(MyConfig config)
     {
+        this.config = config;
         inventory = new List<IItem>();
         pokemons = new List<IPokemon>();
         Currency = 0;
-        Currency = 0;
-        state = new MenuState(this);
+        state = new MenuState(this, config);
         invoker = new Invoker();
     }
 

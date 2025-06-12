@@ -20,7 +20,7 @@ public static class Utils
             string value = Console.ReadLine();
             if (value.Length != 0)
                 return value;
-            Console.WriteLine("ERROR: plain input, string expected");
+            Logger.Log("ERROR", "Plain input, string expected");
         }
     }
 
@@ -35,7 +35,7 @@ public static class Utils
             }
             else
             {
-                Console.WriteLine("ERROR: wrong input type, integer expected.");
+                Logger.Log("ERROR", "wrong input type, integer expected.");
                 continue;
             }
         }

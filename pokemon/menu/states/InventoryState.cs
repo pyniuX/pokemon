@@ -6,15 +6,15 @@ namespace pokemon.menu.states;
 
 using Microsoft.AspNetCore.Builder;
 using pokemon.menu.commands;
-
+using pokemon.utils;
 public class InventoryState(Player player) : State(player)
 {
     public override void ShowMenu()
     {
-        // TODO: load messages from json
-        Console.WriteLine($"\nYou got {player.CountPotions()} potions.");
+        Console.WriteLine("\n---------------------------");
+        Console.WriteLine($"You got {player.CountPotions()} potions.");
         Console.WriteLine($"You got {player.CountPokeballs()} pokeballs.");
-        Console.WriteLine("1. Use Potion");
+        Console.WriteLine("\n1. Use Potion");
         Console.WriteLine("2. Exit\n");
     }
 
@@ -29,7 +29,7 @@ public class InventoryState(Player player) : State(player)
                 ToPrevious();
                 break;
             default:
-                Console.WriteLine($"{DateTime.Now} | STATE | {Info()} | Invalid input: {input}");
+                Logger.Log("STATE", $"{Info()} | Invalid input: {input}");
                 break;
         }
     }

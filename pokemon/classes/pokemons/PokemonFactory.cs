@@ -25,7 +25,7 @@ public static class PokemonFactory
         string jsonString = File.ReadAllText(path);
 
         var dict = JsonConvert.DeserializeObject<Dictionary<string, object>>(jsonString);
-        Console.WriteLine($"{DateTime.Now} | POKEMON | Creating pokemon from {filePath}");
+        Logger.Log("POKEMON", $"Creating pokemon from {filePath}");
         Pokemon pok = JsonConvert.DeserializeObject<Pokemon>(jsonString)!;
 
         pok.SetDefaultHP(pok.HP);
@@ -44,7 +44,7 @@ public static class PokemonFactory
             {
                 foreach (string attackFile in jArray)
                 {
-                    Console.WriteLine($"{DateTime.Now} | POKEMON | Adding attack from: {attackFile} for pokemon: {filePath}");
+                    Logger.Log("POKEMON", $"Adding attack from: {attackFile} for pokemon: {filePath}");
                     pok.AddAttack(AttackFactory.CreateAttack(attackFile));
                 }
             }

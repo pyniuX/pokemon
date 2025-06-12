@@ -4,6 +4,8 @@
 
 namespace pokemon.menu.states;
 
+using pokemon.utils;
+
 public class FightState(Player player) : State(player)
 {
     public override void ShowMenu()
@@ -29,7 +31,7 @@ public class FightState(Player player) : State(player)
                 // attack
                 break;
             default:
-                Console.WriteLine($"{DateTime.Now} | STATE | {Info()} | Invalid input: {input}");
+                Logger.Log("STATE", $"{Info()} | Invalid input: {input}");
                 break;
         }
     }

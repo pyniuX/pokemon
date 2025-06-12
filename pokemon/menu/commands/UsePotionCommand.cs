@@ -4,7 +4,9 @@
 
 namespace pokemon.menu.commands;
 
+using Microsoft.Extensions.Logging;
 using pokemon.classes.items;
+using pokemon.utils;
 
 public class UsePotionCommand: ICommand
 {
@@ -17,16 +19,17 @@ public class UsePotionCommand: ICommand
 
     public void Execute()
     {
-        Console.WriteLine($"{DateTime.Now} | COMMAND | Using potion");
+        Logger.Log("COMMAND", "Using potion.");
         try
         {
             IItem item = player.Inventory.FirstOrDefault(i => i.Name == "Potion", null) ?? throw new ItemMissing();
             item.Execute(player, player.GetPokemon(0));
             player.RemoveItem(item);
+            Logger.Log("COMMAND", "Successfully used potion.");
         }
         catch (ItemMissing)
         {
-            Console.WriteLine($"{DateTime.Now} | COMMAND | You don't have potion to use.");
+            Logger.Log("COMMAND", "You don't have potion to use.");
         }
     }
 }
