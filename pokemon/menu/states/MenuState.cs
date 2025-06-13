@@ -30,13 +30,13 @@ public class MenuState : State
         switch (input)
         {
             case "1":
-                ToFight(this);
+                ToFight();
                 break;
             case "2":
-                ToInventory(this);
+                ToInventory();
                 break;
             case "3":
-                ToShop(this, config);
+                ToShop(config);
                 break;
             case "4":
                 player.Invoker.SetAndExecuteCommand(new ExitCommand());

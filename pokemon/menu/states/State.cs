@@ -4,6 +4,7 @@
 
 namespace pokemon.menu.states;
 
+using pokemon.classes.pokemons;
 using pokemon.utils;
 
 class StateTransitionForbidden() : Exception();
@@ -26,38 +27,34 @@ public abstract class State
         return this.GetType().Name;
     }
 
-    public virtual void ToFight(State previousState)
+    public virtual void ToFight()
     {
         LogFightTransition();
-        player.PreviousState = previousState;
         player.State = new FightState(player);
     }
 
-    public virtual void ToShop(State previousState, MyConfig config)
+    public virtual void ToShop(MyConfig config)
     {
         LogShopTransition();
-        player.PreviousState = previousState;
         player.State = new ShopState(player, config);
     }
 
-    public virtual void ToInventory(State previousState)
+    public virtual void ToInventory(IPokemon? pokemon = null)
     {
         LogInventoryTransition();
-        player.PreviousState = previousState;
-        player.State = new InventoryState(player);
+        player.State = new InventoryState(player, pokemon);
     }
 
-    public virtual void ToMenu(State previousState, MyConfig config)
+    public virtual void ToMenu(MyConfig config)
     {
         LogMenuTransition();
-        player.PreviousState = previousState;
         player.State = new MenuState(player, config);
     }
 
     public virtual void ToPrevious()
     {
         Logger.Log("STATE", $"{Info()} | Returning to previous state...");
-        player.State = player.PreviousState;
+        player.PopState();
     }
 
     public void LogShopTransition()

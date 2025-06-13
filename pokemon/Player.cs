@@ -14,8 +14,7 @@ public class Player
     private readonly MyConfig? config;
     private List<IItem> inventory;
     private List<IPokemon> pokemons;
-    private State state;
-    private State previousState;
+    private Stack<State> state = new Stack<State>{};
     private Invoker invoker;
 
     public string? Name { get; set; }
@@ -23,14 +22,8 @@ public class Player
 
     public State State
     {
-        get { return state; }
-        set { state = value; }
-    }
-
-    public State PreviousState
-    {
-        get { return previousState; }
-        set { previousState = value; }
+        get { return state.Peek(); }
+        set { state.Push(value); }
     }
 
     public Invoker Invoker
@@ -45,9 +38,10 @@ public class Player
         inventory = new List<IItem>();
         pokemons = new List<IPokemon>();
         Currency = 0;
-        state = new MenuState(this, config);
+        State = new MenuState(this, config);
         invoker = new Invoker();
     }
+
 
     public IReadOnlyList<IItem> Inventory => inventory.AsReadOnly();
     public IReadOnlyList<IPokemon> Pokemons => pokemons.AsReadOnly();
@@ -76,7 +70,7 @@ public class Player
     {
         return inventory[index];
     }
-     
+
     public IPokemon GetPokemon(int index)
     {
         return pokemons[index];
@@ -90,5 +84,20 @@ public class Player
     public int CountPokeballs()
     {
         return inventory.Count(p => p.Name == "Pokeball");
+    }
+
+    public void PopState()
+    {
+        state.Pop();
+    }
+
+    public State? PreviousState()
+    {
+        if (state.Count > 1)
+        {
+            var array = state.ToArray();
+            return array[1];
+        }
+        return null;
     }
 }

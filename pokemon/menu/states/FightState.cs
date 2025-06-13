@@ -20,6 +20,7 @@ public class FightState: State
     public override void ShowMenu()
     {
         Console.WriteLine("\n---------------------------");
+        Console.WriteLine($"Fighting {enemy.Name}, HP: {enemy.HP}/{enemy.DefaultHP}");
         Console.WriteLine("1. Attack");
         Console.WriteLine("2. Open Inventory");
         Console.WriteLine("3. Escape");
@@ -33,7 +34,7 @@ public class FightState: State
                 // attack
                 break;
             case "2":
-                // ToInventory();
+                ToInventory(enemy);
                 break;
             case "3":
                 player.Invoker.SetAndExecuteCommand(new EscapeCommand(player, enemy));
