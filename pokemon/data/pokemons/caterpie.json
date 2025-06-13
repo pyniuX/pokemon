@@ -1,0 +1,8 @@
+{
+    "Name": "Caterpie",
+    "Level": 0,
+    "HP": 20,
+    "AP": 1,
+    "Type": "Normal",
+    "AttacksFiles": ["scratch.json"]
+}

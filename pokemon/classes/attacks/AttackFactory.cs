@@ -12,7 +12,7 @@ using System.Collections.Generic;
 public static class AttackFactory
 {
     private static AttackDatabase database = new AttackDatabase();
-    private static MyConfig? config;
+    private static MyConfig config;
 
     public static Attack CreateAttack(string filePath)
     {
@@ -53,7 +53,7 @@ public static class AttackFactory
         database.Clear();
     }
 
-    public static void SetConfig(MyConfig? config)
+    public static void SetConfig(MyConfig config)
     {
         AttackFactory.config = config;
     }

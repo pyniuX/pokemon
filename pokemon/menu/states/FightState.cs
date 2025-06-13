@@ -4,17 +4,25 @@
 
 namespace pokemon.menu.states;
 
+using pokemon.classes.pokemons;
+using pokemon.menu.commands;
 using pokemon.utils;
 
-public class FightState(Player player) : State(player)
+public class FightState: State
 {
+    private IPokemon enemy;
+
+    public FightState(Player player): base(player)
+    {
+        enemy = GenerateEnemy();
+    }
+
     public override void ShowMenu()
     {
-        // TODO: load messages from json
-        Console.WriteLine("\nChoose an option:");
+        Console.WriteLine("\n---------------------------");
         Console.WriteLine("1. Attack");
         Console.WriteLine("2. Open Inventory");
-        Console.WriteLine("3. Run Away");
+        Console.WriteLine("3. Escape");
     }
 
     public override void HandleInput(string input)
@@ -28,12 +36,17 @@ public class FightState(Player player) : State(player)
                 // ToInventory();
                 break;
             case "3":
-                // attack
+                player.Invoker.SetAndExecuteCommand(new EscapeCommand(player, enemy));
                 break;
             default:
                 Logger.Log("STATE", $"{Info()} | Invalid input: {input}");
                 break;
         }
+    }
+
+    private IPokemon GenerateEnemy()
+    {
+        return PokemonFactory.CreatePokemon("caterpie.json");
     }
 
 

@@ -2,5 +2,6 @@
     "Name": "Ivysaur",
     "HP": 60,
     "AP": 1.2,
-    "Type": "Grass"
+    "Type": "Grass",
+    "AttacksFiles": ["leafage.json", "vine_whip.json"]
 }

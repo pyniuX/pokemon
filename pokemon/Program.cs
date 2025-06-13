@@ -12,6 +12,7 @@ using pokemon.classes.pokemons;
 using pokemon.classes.items;
 using pokemon.menu.commands;
 using pokemon.utils;
+using pokemon.classes.attacks;
 
 class Program
 {
@@ -26,6 +27,7 @@ class Program
         var myConfig = config.GetSection("MyConfig").Get<MyConfig>();
 
         PokemonFactory.SetConfig(myConfig);
+        AttackFactory.SetConfig(myConfig);
         // DIExample getConfig = new DIExample(Options.Create(myConfig));
         // Console.WriteLine(myConfig.DataDir);    
 

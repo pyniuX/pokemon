@@ -17,7 +17,7 @@ using Newtonsoft.Json.Linq;
 
 public static class PokemonFactory
 {
-    private static MyConfig? config;
+    private static MyConfig config;
 
     public static Pokemon CreatePokemon(string filePath)
     {
@@ -52,7 +52,7 @@ public static class PokemonFactory
         return pok;
     }
 
-    public static void SetConfig(MyConfig? config)
+    public static void SetConfig(MyConfig config)
     {
         PokemonFactory.config = config;
     }

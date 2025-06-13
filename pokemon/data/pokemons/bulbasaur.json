@@ -4,5 +4,6 @@
     "HP": 45,
     "AP": 1,
     "Type": "Grass",
-    "EvolutionFile": "ivysaur.json"
+    "EvolutionFile": "ivysaur.json",
+    "AttacksFiles": ["leafage.json"]
 }

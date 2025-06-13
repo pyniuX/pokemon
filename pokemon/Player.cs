@@ -14,20 +14,20 @@ public class Player
     private readonly MyConfig? config;
     private List<IItem> inventory;
     private List<IPokemon> pokemons;
-    private State? state;
-    private State? previousState;
+    private State state;
+    private State previousState;
     private Invoker invoker;
 
     public string? Name { get; set; }
     public int Currency { get; set; }
 
-    public State? State
+    public State State
     {
         get { return state; }
         set { state = value; }
     }
 
-    public State? PreviousState
+    public State PreviousState
     {
         get { return previousState; }
         set { previousState = value; }

@@ -33,8 +33,7 @@ public class Pokeball : IItem
 
     public bool Execute(Player player, IPokemon pokemon)
     {
-        double catchChance = CalculateCatchChance(pokemon);
-        if (random.Next(0, 100) < 50 + catchChance)
+        if (random.Next(0, 100) < CalculateCatchChance(pokemon))
         {
             player.AddPokemon(pokemon);
             return true;
@@ -44,6 +43,7 @@ public class Pokeball : IItem
 
     private double CalculateCatchChance(IPokemon pokemon)
     {
-        return  (double)(0.3d * (100 - ((pokemon.HP*100)/pokemon.DefaultHP)));
+        // the lower pokemon HP, the higher chance to catch
+        return (double)(50 + (0.3d * (100 - ((pokemon.HP * 100) / pokemon.DefaultHP))));
     }
 }
