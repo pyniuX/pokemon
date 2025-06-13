@@ -25,7 +25,6 @@ public class UsePotionCommand: ICommand
             IItem item = player.Inventory.FirstOrDefault(i => i.Name == "Potion", null) ?? throw new ItemMissing();
             item.Execute(player, player.GetPokemon(0));
             player.RemoveItem(item);
-            Logger.Log("COMMAND", "Successfully used potion.");
         }
         catch (ItemMissing)
         {

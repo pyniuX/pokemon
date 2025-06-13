@@ -7,6 +7,8 @@ namespace pokemon.menu.states;
 using pokemon.utils;
 using Microsoft.Extensions.Logging;
 using pokemon.menu.commands;
+using pokemon.classes.pokemons;
+
 public class MenuState : State
 {
     private readonly MyConfig config;
@@ -19,7 +21,12 @@ public class MenuState : State
     public override void ShowMenu()
     {
         Console.WriteLine("\n---------------------------");
-        Console.WriteLine("1. Start Fight");
+        Console.WriteLine("Your pokemons");
+        foreach (IPokemon pok in player.Pokemons)
+        {
+            Console.WriteLine($"NAME: {pok.Name}, HP: {pok.HP}/{pok.DefaultHP}, LEVEL: {pok.Level}");
+        }
+        Console.WriteLine("\n1. Start Fight");
         Console.WriteLine("2. Open Inventory");
         Console.WriteLine("3. Open Shop");
         Console.WriteLine("4. Exit Game\n");

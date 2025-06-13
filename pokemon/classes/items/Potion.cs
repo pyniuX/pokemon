@@ -5,6 +5,7 @@
 namespace pokemon.classes.items;
 
 using pokemon.classes.pokemons;
+using pokemon.utils;
 
 public class Potion : IItem
 {
@@ -34,6 +35,7 @@ public class Potion : IItem
     public bool Execute(Player player, IPokemon pokemon)
     {
         pokemon.Heal(heal);
+        Logger.Log("ITEM", "Successfully used potion.");
         return true;
     }
 }

@@ -23,16 +23,18 @@ public class UsePokeballCommand: ICommand
     public void Execute()
     {
         Logger.Log("COMMAND", "Using pokeball.");
-        // try
-        // {
-        //     IItem item = player.Inventory.FirstOrDefault(i => i.Name == "Potion", null) ?? throw new ItemMissing();
-        //     item.Execute(player, player.GetPokemon(0));
-        //     player.RemoveItem(item);
-        //     Logger.Log("COMMAND", "Successfully used potion.");
-        // }
-        // catch (ItemMissing)
-        // {
-        //     Logger.Log("COMMAND", "You don't have potion to use.");
-        // }
+        try
+        {
+            IItem item = player.Inventory.FirstOrDefault(i => i.Name == "Pokeball", null) ?? throw new ItemMissing();
+            item.Execute(player, pokemon);
+            player.RemoveItem(item);
+            player.PopState();
+            player.PopState();
+            Logger.Log("COMMAND", "Successfully used pokeball.");
+        }
+        catch (ItemMissing)
+        {
+            Logger.Log("COMMAND", "You don't have pokeball to use.");
+        }
     }
 }

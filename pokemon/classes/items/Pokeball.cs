@@ -5,6 +5,7 @@
 namespace pokemon.classes.items;
 
 using pokemon.classes.pokemons;
+using pokemon.utils;
 
 public class Pokeball : IItem
 {
@@ -36,8 +37,10 @@ public class Pokeball : IItem
         if (random.Next(0, 100) < CalculateCatchChance(pokemon))
         {
             player.AddPokemon(pokemon);
+            Logger.Log("ITEM", "Successfully caught pokemon.");
             return true;
         }
+        Logger.Log("ITEM", "Pokemon avoided catching.");
         return false;
     }
 
